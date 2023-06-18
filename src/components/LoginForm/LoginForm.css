@@ -1,0 +1,84 @@
+.login-form {
+    margin-top: 50px;
+    margin-left: 14%;
+}
+.field-container {
+    margin: 30px 0 10px;
+    width: 85%;
+}
+.field-container label {
+    color: #191778;
+    font-weight: bold;
+}
+.field-container .input-field {
+    position: relative;
+}
+.field-container .input-field input {
+    height: 45px;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 17px;
+    color: #191778;
+    box-sizing: border-box;
+    padding: 5px 50px 5px 10px;
+    background-color: #f1f4fa;
+    border-radius: 4px;
+    border: none;
+}
+.field-container .input-field input[type="password"] {
+    font-size: 20px;
+}
+.field-container .input-field input:focus {
+    border: none;
+    outline: 2px solid #191778;
+}
+.field-container .input-field .icon {
+    position: absolute;
+    top: 33%;
+    right: 5%;
+}
+.forgot {
+    text-align: right;
+    margin-right: 60px;
+}
+.forgot .link {
+    color: #191778 !important;
+    text-decoration: none;
+}
+.forgot .link:hover {
+    text-decoration: underline;
+}
+.submit-btn {
+    margin-top: 30px;
+    position: relative;
+    width: 32%;
+    margin-left: 105px;
+}
+.submit-btn button {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #3a36db;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    padding: 5px 0 5px 30px;
+    border: none;
+    cursor: pointer;
+}
+.submit-btn .icon {
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    color: white;
+    border: 2px solid white;
+    border-radius: 100%;
+    padding: 4px;
+    cursor: pointer;
+}
+.submit-btn button:hover {
+    background-color: #191778;
+}
+.icon-hovered {
+    background-color: #191778 !important;
+}
