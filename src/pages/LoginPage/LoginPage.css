@@ -1,0 +1,57 @@
+.login-page {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+.left-container {
+    width: 70%;
+    background-color: #f1f4fa;
+    height: 100%;
+}
+.logo {
+    margin: 20px 50px 5px;
+}
+.web-name {
+    text-align: center;
+    line-height: 0.5;
+    color: #2422b0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 120px;
+}
+.web-name h2 {
+    font-size: 32px;
+}
+.web-name h1 {
+    font-size: 44px;
+    color: #191778 !important;
+}
+.illustration {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    margin: 30px 0;
+    justify-content: space-between;
+}
+.illu1 {
+    margin-left: 60px;
+}
+.illu2 {
+    margin-right: 160px;
+    margin-top: -60px;
+}
+.contact {
+    color: #191778;
+    margin: 0 0 45px;
+    text-align: center;
+    font-weight: bold;
+}
+.right-container {
+    width: 100%;
+}
+.right-container .web-logo {
+    text-align: center;
+    color: #191778;
+    margin-top: 180px;
+}
