@@ -37,6 +37,11 @@
     top: 33%;
     right: 5%;
 }
+.error-message {
+    margin-top: 5px;
+    color: rgb(190, 7, 7);
+    font-weight: bold;
+}
 .forgot {
     text-align: right;
     margin-right: 60px;
