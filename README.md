@@ -1,3 +1,38 @@
+# Hệ thống quản lý tài sản thiết bị y tế trong bệnh viện
+
+## Mô tả
+
+Hệ thống giúp quản lý các thiết bị y tế trong bệnh viện với nhiều tác vụ. Hệ thống cho phép người vận hành thực hiện yêu cầu sử dụng thiết bị, báo cáo hỏng hóc thiết bị, đề nghị mua sắm thiết bị. Người quản lý có thể theo dõi dashboard quản lý thiết bị y tế, quản lý thông tin, sử dụng, hỏng hóc & sửa chữa, bảo trì, yêu cầu mua sắm từ người vận hành.
+
+## Công nghệ sử dụng
+
+ - Front-end: ReactJS, Axios
+ - Back-end: NodeJS, Express
+ - Database: MongoDB, MongoDB Compass
+
+## Mô tả chức năng chính
+
+Người vận hành:
+
+ - Tạo yêu cầu sử dụng thiết bị gửi tới người quản lý
+ - Tạo báo cáo hỏng hóc gửi tới người quản lý
+ - Tạo đề nghị mua sắm thiết bị gửi tới người quản lý
+
+Người quản lý:
+
+ - Điều khiển, theo dõi dashboard để đánh giá hiệu quả quản lý thiết bị y tế
+ - Quản lý thông tin thiết bị
+ - Tiếp nhận, phê duyệt/từ chối yêu cầu sử dụng thiết bị từ người vận hành
+ - Quản lý thông tin sử dụng thiết bị
+ - Tiếp nhận báo cáo hỏng hóc, quyết định sửa chữa, lập báo cáo sửa chữa thiết bị
+ - Nhận thông tin các thiết bị sắp tới hạn bảo trì định kỳ
+ - Quản lý thông tin bảo trì thiết bị
+ - Tiếp nhận, phê duyệt/từ chối yêu cầu mua sắm thiết bị từ người vận hành
+ - Quản lý tài khoản người vận hành
+ - Hầu hết các chức năng quản lý đều cho phép CRUD, ngoài ra có thể tìm kiếm, lọc, sắp xếp, xuất file
+
+## Hướng dẫn sử dụng
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
