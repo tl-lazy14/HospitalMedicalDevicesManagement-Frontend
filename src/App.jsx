@@ -1,26 +1,22 @@
-import {BrowserRouter as Router, Routes, Route, useLocation, useNavigate} from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from './pages/LoginPage/LoginPage';
+import Homepage from './pages/Homepage/Homepage'
 import './App.css';
-
-const DefaultRedirect = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (location.pathname === '/') navigate('/login');
-  }, [location, navigate]);
-}
+import { UserProvider } from "./components/userContext";
 
 function App() {
+
   return (
     <>
       <div className="app">
-        <Router>
-          <Routes>
-            <Route path="/" element={<DefaultRedirect />} />
-            <Route path="/login" element={<LoginPage />} /> 
-          </Routes>
-        </Router>
+        <UserProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+          </Router>
+        </UserProvider>
       </div>
     </>
   );

@@ -3,8 +3,13 @@ import MailImg from "../../assets/mail.png"
 import LockImg from "../../assets/lock.png"
 import { NavLink } from "react-router-dom";
 import { FaArrowRight } from 'react-icons/fa';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../userContext";
+
 
 const LoginForm = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -14,6 +19,7 @@ const LoginForm = () => {
     const [errorPassword, setErrorPassword] = useState("");
 
     const navigate = useNavigate();
+    const { login } = useContext(UserContext);
 
     const handleEmailChange = (event) => {
         const value = event.target.value;
@@ -27,7 +33,7 @@ const LoginForm = () => {
         setPassword(value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         let count = 0;
         if (!email) {
@@ -41,11 +47,35 @@ const LoginForm = () => {
         } else setErrorPassword("");
 
         if (count > 0) return;
-        else navigate('/next-page')
+        else {
+            try {
+                const response = await axios.post(`http://localhost:3001/api/auth/login`, { email, password });
+                const user = response.data;
+                localStorage.setItem('accessToken', user.accessToken);
+                localStorage.setItem('userID', user._id);
+                localStorage.setItem('hasJustLoggedIn', 'true');
+                login(user);
+                navigate('/');
+            } catch (err) {
+                toast.error('Tài khoản hoặc mật khẩu không đúng. Vui lòng nhập lại', {
+                    position: toast.POSITION.TOP_RIGHT,
+                    containerId: "incorrect",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeButton: true,
+                    style: {
+                        color: '#d32f2f',
+                        fontSize: '17px',
+                        backgroundColor: '#f1f4fa',
+                    },
+                });
+            }
+        }
     }
 
     return (
         <div className="login-form">
+            <ToastContainer containerId="incorrect" limit={1}/>
             <form onSubmit={handleSubmit}>
                 <div className="field-container">
                     <label>Email Address</label>
@@ -82,7 +112,7 @@ const LoginForm = () => {
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                     />
-                    <button type="submit" className={`${isHovered ? 'icon-hovered' : ''}`} >Login</button>
+                    <button type="submit" className={`${isHovered ? 'icon-hovered' : ''}`}>Login</button>
                 </div>
             </form>
         </div>

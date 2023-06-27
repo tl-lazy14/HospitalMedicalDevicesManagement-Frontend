@@ -1,11 +1,26 @@
-import "./LoginPage.css"
-import WebLogo from "../../assets/logoWeb.png"
-import MedicalLogo from "../../assets/medicalLogo.png"
-import Illustration1 from "../../assets/illustration1.png"
-import Illustration2 from "../../assets/illustration2.png"
-import LoginForm from "../../components/LoginForm/LoginForm"
+import "./LoginPage.css";
+import WebLogo from "../../assets/logoWeb.png";
+import MedicalLogo from "../../assets/medicalLogo.png";
+import Illustration1 from "../../assets/illustration1.png";
+import Illustration2 from "../../assets/illustration2.png";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../components/userContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+    const { user } = useContext(UserContext);
+
+    const accessToken = localStorage.getItem("accessToken");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user && accessToken) {
+            navigate('/');
+        } 
+    }, [accessToken, navigate, user]);
+
     return (
         <div className="login-page">
             <div className="left-container">

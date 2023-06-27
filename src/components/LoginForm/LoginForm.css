@@ -12,6 +12,7 @@
 }
 .field-container .input-field {
     position: relative;
+    height: 65px;
 }
 .field-container .input-field input {
     height: 45px;
@@ -34,7 +35,7 @@
 }
 .field-container .input-field .icon {
     position: absolute;
-    top: 33%;
+    top: 28%;
     right: 5%;
 }
 .error-message {
@@ -43,6 +44,7 @@
     font-weight: bold;
 }
 .forgot {
+    margin-top: 25px;
     text-align: right;
     margin-right: 60px;
 }
