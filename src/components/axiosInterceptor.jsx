@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Tạo một instance Axios
 const api = axios.create({
@@ -21,7 +22,6 @@ api.interceptors.response.use(
         // Gửi yêu cầu tới API để lấy AccessToken mới
         const response = await api.post('/auth/refresh');
         const { accessToken } = response.data;
-
         // Lưu AccessToken mới vào localStorage
         localStorage.setItem('accessToken', accessToken);
 
@@ -32,6 +32,9 @@ api.interceptors.response.use(
         // Xử lý lỗi khi không thể lấy AccessToken mới
         console.error('Error refreshing access token:', refreshError);
         // Chuyển hướng đến trang đăng nhập hoặc hiển thị thông báo lỗi
+        const navigate = useNavigate();
+        navigate('/login');
+        return Promise.reject(error);
       }
     }
 

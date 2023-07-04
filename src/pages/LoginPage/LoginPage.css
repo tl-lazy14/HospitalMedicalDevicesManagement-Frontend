@@ -9,7 +9,7 @@
     background-color: #f1f4fa;
     height: 100%;
 }
-.logo {
+.logo-login-page {
     margin: 20px 50px 5px;
 }
 .web-name {
@@ -49,6 +49,7 @@
 }
 .right-container {
     width: 100%;
+    background-color: white;
 }
 .right-container .web-logo {
     text-align: center;

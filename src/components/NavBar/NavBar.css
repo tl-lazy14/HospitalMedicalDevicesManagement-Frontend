@@ -1,0 +1,111 @@
+.nav-bar {
+    background-color: white;
+    float: left;
+    box-sizing: border-box;
+    height: 100%;
+    width: 18%;
+    position: fixed;
+}
+.logo {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    cursor: pointer;
+}
+.logo img {
+    width: 50px;
+    height: auto;
+}
+.logo h2 {
+    margin: 0;
+    font-size: 22px;
+}
+.nav-bar-container {
+    list-style: none;
+    padding: 0;
+}
+.nav-bar-container li button {
+    border: none;
+    font-size: 15px;
+    background-color: white;
+    width: 100%;
+    color: #06152b;
+    opacity: 0.8;
+    padding: 10px 25px 10px 30px;
+    height: 45px;
+    text-align: left;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.nav-bar-container li button:hover, .dropdown-menu li:hover {
+    background-color: #f0f2f4;
+    color: #0b097a;
+    opacity: 1;
+}
+.nav-bar-container li button .icon {
+    font-size: 16px;
+    width: 25px;
+    margin-right: 5px;
+}
+.nav-bar-container li button .icon-dropdown {
+    font-size: 16px;
+    float: right;
+    align-items: center;
+    margin-top: 1px;
+    transition: transform 0.4s ease;
+}
+.dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+.dropdown-menu.open {
+    max-height: 500px;
+}
+.dropdown-menu li {
+    border: none;
+    font-size: 15px;
+    background-color: white;
+    width: 100%;
+    padding: 15px 10px 10px 60px;
+    height: 45px;
+    color: #06152b;
+    opacity: 0.8;
+    text-align: left;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.selected {
+    background-color: #d3dfe9 !important;
+    color: #0b097a !important;
+    opacity: 1 !important;
+}
+.open .icon-dropdown {
+    transform: rotate(-90deg);
+}
+.user-info {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    margin: 20px 30px;
+    width: 100%;
+    height: fit-content;
+}
+.user-info-container {
+    line-height: 0.5;
+    font-size: 16px;
+    width: 72%;
+}
+.log-out .icon {
+    font-size: 25px;
+    margin-top: 20px;
+    color: #191778;
+    cursor: pointer;
+}

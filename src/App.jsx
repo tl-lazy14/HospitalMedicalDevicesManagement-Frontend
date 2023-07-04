@@ -1,8 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from './pages/LoginPage/LoginPage';
-import Homepage from './pages/Homepage/Homepage'
+import Homepage from './pages/Homepage'
 import './App.css';
 import { UserProvider } from "./components/userContext";
+
+const Dashboard = () => {
+  return (
+    <>
+      <div style={{textAlign: "right", color: "black", width: "100%"}}><h1>Dashboard Page</h1></div>
+    </>
+  );
+}
 
 function App() {
 
@@ -12,8 +20,10 @@ function App() {
         <UserProvider>
           <Router>
             <Routes>
-              <Route path="/" element={<Homepage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/" element={<Homepage />} >
+                  <Route index path="dashboard" element={<Dashboard />} />
+              </Route>
             </Routes>
           </Router>
         </UserProvider>
