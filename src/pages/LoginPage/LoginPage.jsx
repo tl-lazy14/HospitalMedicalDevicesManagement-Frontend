@@ -24,7 +24,7 @@ const LoginPage = () => {
     return (
         <div className="login-page">
             <div className="left-container">
-                <div className="logo">
+                <div className="logo-login-page">
                     <img src={MedicalLogo} style={{width: "130px"}} alt="medical-logo" />
                 </div>
                 <div className="web-name">

@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../components/axiosInterceptor";
-import { UserContext } from "../../components/userContext";
+import api from "../components/axiosInterceptor";
+import { UserContext } from "../components/userContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminSite from "./Site/AdminSite";
 
 const Homepage = () => {
     const { user, logout } = useContext(UserContext);
@@ -50,16 +51,7 @@ const Homepage = () => {
     return (
         <>
             <ToastContainer containerId="welcome" limit={1}/>
-            <div>Homepage</div>
-            {user && (
-            <div>
-                <p>{user._id}</p>
-                <p>{user.email}</p>
-                <p>{user.name}</p>
-                <p>{user.department}</p>
-            </div>
-            )}
-            <button onClick={handleLogout}>Đăng xuất</button>
+            { user && user.isAdmin && <AdminSite onLogOut={handleLogout} /> }
         </>
     );
 }

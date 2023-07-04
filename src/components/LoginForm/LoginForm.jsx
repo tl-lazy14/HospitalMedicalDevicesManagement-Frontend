@@ -55,7 +55,7 @@ const LoginForm = () => {
                 localStorage.setItem('userID', user._id);
                 localStorage.setItem('hasJustLoggedIn', 'true');
                 login(user);
-                navigate('/');
+                navigate('/dashboard');
             } catch (err) {
                 toast.error('Tài khoản hoặc mật khẩu không đúng. Vui lòng nhập lại', {
                     position: toast.POSITION.TOP_RIGHT,
