@@ -1,0 +1,84 @@
+.modal-device {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.modal-device h2 {
+    margin: 0 0 30px 0;
+    text-align: center;
+    font-size: 28px;
+}
+.grid-form {
+    display: grid;
+    gap: 25px;
+    font-size: 16px;
+}
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+.grid-col label span {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.grid-col label input, .grid-col label select {
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid rgb(198, 196, 196);
+    background-color: #f1f4fa;
+}
+.grid-col select {
+    width: 270px !important;
+    height: 42px !important;
+}
+.grid-col input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url('../../assets/Calendar.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: center;
+    opacity: 1;
+    cursor: pointer;
+}
+.grid-row button {
+    background-color: #3a36db;
+    color: white;
+    padding: 13px 0;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 8px;
+}
+.grid-row button:hover {
+    background-color: #1816a1;
+}
+.grid-row .done-btn {
+    margin-right: -20px;
+    justify-self: end;
+}
+.grid-row .cancel-btn {
+    margin-left: -20px;
+}
+.overlay-device {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}

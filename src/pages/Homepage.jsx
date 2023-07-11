@@ -20,7 +20,7 @@ const Homepage = () => {
         else if (hasJustLoggedIn) {
             toast.success('Đăng nhập thành công!', {
                 containerId: 'welcome',
-                position: toast.POSITION.TOP_RIGHT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 3000,
                 hideProgressBar: true,
                 closeButton: false,
@@ -36,7 +36,7 @@ const Homepage = () => {
 
     const handleLogout = async () => {
         try {
-            await api.post(`http://localhost:3001/api/auth/logout`, user._id, {
+            await api.post(`/auth/logout`, user._id, {
                 headers: { token: `Bearer ${accessToken}` },
             });
             localStorage.removeItem('accessToken');

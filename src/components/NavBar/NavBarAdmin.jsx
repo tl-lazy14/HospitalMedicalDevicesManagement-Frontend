@@ -18,7 +18,6 @@ const NavBarAdmin = ({onLogOut}) => {
     const navigate = useNavigate();
 
     return (
-        <>
             <div className="nav-bar">
                 <div onClick={() => navigate('/')} className="logo">
                     <img src={WebLogo} alt="logo" />
@@ -98,7 +97,6 @@ const NavBarAdmin = ({onLogOut}) => {
                     </div>
                 </div>
             </div>
-        </>
     );
 }
 

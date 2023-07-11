@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     const accessToken = localStorage.getItem('accessToken');
     const userID = localStorage.getItem('userID');
     if (accessToken && userID) {
-      api.get(`http://localhost:3001/api/user/${userID}`, {
+      api.get(`/user/${userID}`, {
         headers: { token: `Bearer ${accessToken}` },
       })
       .then(response => {

@@ -1,9 +1,8 @@
 .nav-bar {
     background-color: white;
-    float: left;
     box-sizing: border-box;
     height: 100%;
-    width: 18%;
+    width: 275px;
     position: fixed;
 }
 .logo {
