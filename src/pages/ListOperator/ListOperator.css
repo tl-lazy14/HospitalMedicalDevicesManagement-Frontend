@@ -1,0 +1,13 @@
+.list-operator-page {
+    width: 100%;
+    margin-left: 315px;
+    margin-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.search-box-operator input {
+    width: 370px !important;
+}
+.filter-department-user {
+    right: 110px;
+}

@@ -1,0 +1,24 @@
+.filter-usage-department-info {
+    left: 968px;
+    width: 320px;
+}
+.select-month-info-usage-page {
+    position: absolute;
+    top: 35px;
+    right: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 40px;
+    padding: 1px 15px 0 15px;
+    border-radius: 8px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.select-month-info-usage-page::-webkit-calendar-picker-indicator {
+    background-image: url('../../assets/Calendar.svg');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: center;
+    opacity: 1;
+    cursor: pointer;
+}

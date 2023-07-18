@@ -89,7 +89,7 @@ const ModalEditDevice = ({ isModalOpen, setIsModalOpen, updateListDevice, device
         }
 
         try {
-            const response = await api.put(`/device/${device._id}`, infoDevice, {
+            const response = await api.put(`/device/devices/${device._id}`, infoDevice, {
                 headers: { token: `Bearer ${accessToken}` },
             });
             console.log(response.data);

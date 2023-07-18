@@ -1,0 +1,54 @@
+.fault-repair-page {
+    width: 100%;
+    margin-left: 315px;
+    margin-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.search-box-fault-repair-page input {
+    width: 440px !important;
+}
+.repair-status .status-accept {
+    background-color: #05a442;
+    color: white;
+    padding: 8px 52px;
+    border-radius: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+.repair-status .status-pending {
+    background-color: #f0b728;
+    color: white;
+    border-radius: 16px;
+    padding: 8px 11px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+.repair-status .status-refuse {
+    background-color: #c83636;
+    color: white;
+    border-radius: 16px;
+    padding: 8px 27px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+.repair-report {
+    background-color: #3686c8;
+    color: white;
+    border-radius: 16px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.repair-report:hover {
+    background-color: #155488;
+    transition: 0.3s;
+}
+.filter-repair-decision {
+    right: 240px;
+}

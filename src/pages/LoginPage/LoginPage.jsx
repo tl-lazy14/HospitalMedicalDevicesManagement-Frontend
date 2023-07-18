@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (user && accessToken) {
-            navigate('/');
+            navigate('/dashboard');
         } 
     }, [accessToken, navigate, user]);
 

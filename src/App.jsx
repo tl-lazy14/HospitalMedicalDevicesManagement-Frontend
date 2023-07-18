@@ -4,6 +4,13 @@ import Homepage from './pages/Homepage'
 import './App.css';
 import { UserProvider } from "./components/userContext";
 import ListDevicePage from "./pages/ListDevicePage/ListDevicePage";
+import DetailDevicePage from "./pages/DetailDevicePage/DetailDevicePage";
+import ListRequestUsagePage from "./pages/ListRequestUsagePage/ListRequestUsagePage";
+import ListInfoUsage from "./pages/ListInfoUsagePage/ListInfoUsage";
+import FaultRepairPage from "./pages/FaultRepairPage/FaultRepairPage";
+import ListInfoMaintenance from "./pages/MaintenancePage/MaintenancePage";
+import PurchaseRequestPage from "./pages/PurchaseRequestPage/PurchaseRequestPage";
+import ListOperator from "./pages/ListOperator/ListOperator";
 
 const Dashboard = () => {
   return (
@@ -24,7 +31,14 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<Homepage />} >
                   <Route index path="dashboard" element={<Dashboard />} />
-                  <Route index path="list-device" element={<ListDevicePage />} />
+                  <Route path="list-operator" element={<ListOperator />} />
+                  <Route path="list-device" element={<ListDevicePage />} />
+                  <Route path="device-info/:id" element={<DetailDevicePage />}  />
+                  <Route path="list-usage-request" element={<ListRequestUsagePage />}  />
+                  <Route path="usage-info" element={<ListInfoUsage />}  />
+                  <Route path="fault-repair" element={<FaultRepairPage />}  />
+                  <Route path="maintenance" element={<ListInfoMaintenance />}  />
+                  <Route path="list-purchase-request" element={<PurchaseRequestPage />}  />
               </Route>
             </Routes>
           </Router>
