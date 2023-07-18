@@ -63,6 +63,7 @@
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 8px;
+    transition: 0.2s;
 }
 .grid-row button:hover {
     background-color: #1816a1;
@@ -81,4 +82,65 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
+}
+.single-col label {
+    display: flex;
+    flex-direction: column;
+}
+.single-col label input {
+    height: 40px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid rgb(198, 196, 196);
+    background-color: #f1f4fa;
+}
+.single-col label span {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.add-device-btn {
+    justify-self: center;
+}
+.add-device-btn button {
+    background-color: #3a36db;
+    color: white;
+    padding: 13px 0;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 130px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 8px;
+    transition: 0.2s;
+}
+.add-device-btn button:hover {
+    background-color: #1816a1;
+}
+.grid-col .name-field {
+    font-weight: 600;
+    margin-right: 3px;
+}
+.modal-due-maintenance {
+    position: relative !important;
+    width: 900px;
+    background-color: #e9e9ee;
+}
+.close-modal-due-maintenance {
+    position: fixed;
+    bottom: 595px;
+    right: 30px;
+}
+.close-modal-due-maintenance .icon {
+    font-size: 40px;
+    color: #c33232;
+    cursor: pointer;
+}
+.close-modal-due-maintenance .icon:hover {
+    color: #921717;
 }

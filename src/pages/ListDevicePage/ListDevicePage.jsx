@@ -48,12 +48,17 @@ const ListDevicePage = () => {
     const openAddFormModal = () => {
         setIsEditFormOpen(false);
         setIsAddFormOpen(true);
+        setActiveRow(null);
+        const newDropdownFilterStates = dropdownFilterStates.map(state => false);
+        setDropdownFilterStates(newDropdownFilterStates);
     };
 
     const openEditFormModal = (device) => {
         setIsAddFormOpen(false);
         setSelectedDevice(device);
         setIsEditFormOpen(true);
+        const newDropdownFilterStates = dropdownFilterStates.map(state => false);
+        setDropdownFilterStates(newDropdownFilterStates);
     };
 
     const handleIconClick = (rowIndex) => {
@@ -63,7 +68,7 @@ const ListDevicePage = () => {
 
     const deleteDevice = async (device) => {
         try {
-            const response = await api.delete(`/device/${device._id}`, {
+            const response = await api.delete(`/device/devices/${device._id}`, {
                 headers: { token: `Bearer ${accessToken}` }
             });
             console.log(response.data);
@@ -132,7 +137,7 @@ const ListDevicePage = () => {
         };
         getAllManufacturer();
         getAllStorageLocation();
-    }, [accessToken])
+    }, [accessToken, devices])
 
     const getDevices = async () => {
         try {
@@ -145,7 +150,7 @@ const ListDevicePage = () => {
               selectedStatus,
               searchQuery,
               page: currentPage,
-              limit: 10
+              limit: 20
             }
           });
           setDevices(response.data.devices);
@@ -162,7 +167,7 @@ const ListDevicePage = () => {
 
     useEffect(() => {
         setCurrentPage(1);
-    }, [selectedManufacturer, selectedStatus, selectedStorageLocation, selectedType])
+    }, [selectedManufacturer, selectedStatus, selectedStorageLocation, selectedType, searchQuery])
 
     const toggleFilterDropdown = (index) => {
         const newDropdownFilterStates = dropdownFilterStates.map((state, i) => {
@@ -283,7 +288,7 @@ const ListDevicePage = () => {
             <ModalAddDevice isModalOpen={isAddFormOpen} setIsModalOpen={setIsAddFormOpen} updateListDevice={getDevices} />
             {selectedDevice && <ModalEditDevice isModalOpen={isEditFormOpen} setIsModalOpen={setIsEditFormOpen} updateListDevice={getDevices} device={selectedDevice} setSelectedDevice={setSelectedDevice} />}
             <div className="list-device-page">
-                <h2 className="name-page">Danh sách thiết bị y tế</h2>
+                <h2 className="name-page">Danh sách thông tin thiết bị y tế</h2>
                 <div className="action-container">
                     <div className="left-action-container">
                         <div onClick={openAddFormModal} className="button">
@@ -488,7 +493,6 @@ const ListDevicePage = () => {
                                         checked={selectedStatus.includes("Sẵn sàng sử dụng")}
                                     />
                                     Sẵn sàng sử dụng
-
                                 </label>
                             </div>
                             <div className="filter-option">

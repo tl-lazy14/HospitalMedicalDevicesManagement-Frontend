@@ -1,0 +1,115 @@
+.detail-info-page {
+    width: 100%;
+    margin-left: 315px;
+    margin-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.btn-back {
+    background-color: #3a36db;
+    color: white;
+    position: absolute;
+    padding: 10px 20px;
+    border-radius: 8px;
+    top: 35px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+.btn-back:hover {
+    background-color: #1816a1;
+}
+.name-page {
+    font-size: 28px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom: 35px;
+}
+.name-page span {
+    color: #3a36db;
+}
+.info-device-container {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    font-size: 17px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 30px 60px;
+    box-sizing: border-box;
+}
+.info-device-container .row {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 150px;
+}
+.info-device-container .row .field-info .name-field {
+    font-weight: 600;
+    margin-right: 3px;
+}
+.button-history-container {
+    display: flex;
+    margin-top: 40px;
+}
+.button-history-container .btn {
+    background-color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    width: 130px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.button-history-container .btn:hover {
+    background-color: #3d6281;
+    color: white;
+}
+.view-history-content .title {
+    margin-top: 25px;
+    font-size: 28px;
+}
+.selected-btn {
+    background-color: #3a36db !important;
+    color: white !important;
+}
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+.col-name {
+    background-color: inherit !important;
+}
+.col-name th {
+    color: #06152b;
+    opacity: 0.8;
+    font-weight: 600;
+    background-color: inherit !important;
+    padding-bottom: 5px;
+}
+.detail-device-header th:first-child {
+    padding-left: 50px !important;
+}
+.col-name .icon {
+    cursor: pointer;
+    font-size: 19px;
+}
+.col-name .icon:hover {
+    color: #3a36db;
+}
+.col-name .selected {
+    color: #3a36db !important;
+}
+table tr {
+    background-color: white;
+}
+table td {
+    padding: 0 10px 0 0;
+    align-items: center;
+    height: 80px;
+}
+.no-found-record {
+    font-size: 24px;
+    color: #d32f2f;
+}

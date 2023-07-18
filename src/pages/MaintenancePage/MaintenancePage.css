@@ -1,0 +1,14 @@
+.list-maintenance-page {
+    width: 100%;
+    margin-left: 315px;
+    margin-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.filter-service-provider {
+    position: absolute;
+    right: 305px !important;
+}
+.search-box-maintenance input {
+    width: 380px !important;
+}

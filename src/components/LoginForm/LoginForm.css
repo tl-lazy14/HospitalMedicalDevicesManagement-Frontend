@@ -82,6 +82,7 @@
     border-radius: 100%;
     padding: 4px;
     cursor: pointer;
+    transition: 0.2s;
 }
 .submit-btn button:hover {
     background-color: #191778;
