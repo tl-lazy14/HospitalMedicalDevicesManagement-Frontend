@@ -1,0 +1,11 @@
+.fault-report-edit {
+    background-color: #3686c8;
+    color: white;
+    border-radius: 16px;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 8px 5px;
+    cursor: pointer;
+    width: 70px;
+}

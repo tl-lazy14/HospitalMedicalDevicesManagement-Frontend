@@ -64,7 +64,7 @@ const ModalDeviceDueMaintenance = ({ isModalOpen, setIsModalOpen }) => {
                                 <th style={{width: "25%"}}>Ngày bảo trì dự kiến</th>
                             </tr>
                             {listDeviceDueMaintenance?.length > 0 && listDeviceDueMaintenance.map((record, index) => (
-                            <tr key={record._id} className="record"> 
+                            <tr key={index} className="record"> 
                                 <td style={{paddingLeft: '30px'}}>{index + 1}</td>
                                 <td style={{paddingLeft: '10px'}}>{record.deviceID}</td>
                                 <td>{record.deviceName}</td>

@@ -11,6 +11,10 @@ import FaultRepairPage from "./pages/FaultRepairPage/FaultRepairPage";
 import ListInfoMaintenance from "./pages/MaintenancePage/MaintenancePage";
 import PurchaseRequestPage from "./pages/PurchaseRequestPage/PurchaseRequestPage";
 import ListOperator from "./pages/ListOperator/ListOperator";
+import RequestUsageOperatorPage from "./pages/RequestUsageOperator/RequestUsageOperator";
+import FaultReportOperatorPage from "./pages/FaultReportOperator/FaultReportOperator";
+import RequestPurchaseOperatorPage from "./pages/PurchaseRequestOperator/PurchaseRequestOperator";
+import ChangePasswordPage from "./pages/ChangePasswordPage/ChangePasswordPage";
 
 const Dashboard = () => {
   return (
@@ -39,6 +43,10 @@ function App() {
                   <Route path="fault-repair" element={<FaultRepairPage />}  />
                   <Route path="maintenance" element={<ListInfoMaintenance />}  />
                   <Route path="list-purchase-request" element={<PurchaseRequestPage />}  />
+                  <Route path="operator/usage-request" element={<RequestUsageOperatorPage />}  />
+                  <Route path="operator/fault-report" element={<FaultReportOperatorPage />}  />
+                  <Route path="operator/purchase-request" element={<RequestPurchaseOperatorPage />}  />
+                  <Route path="operator/change-password" element={<ChangePasswordPage />}  />
               </Route>
             </Routes>
           </Router>
