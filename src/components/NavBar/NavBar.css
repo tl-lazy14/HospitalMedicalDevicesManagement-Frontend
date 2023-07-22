@@ -97,14 +97,36 @@
     width: 100%;
     height: fit-content;
 }
-.user-info-container {
+.user-info .user-info-container {
     line-height: 0.5;
     font-size: 16px;
     width: 72%;
 }
-.log-out .icon {
+.user-info .log-out .icon {
     font-size: 25px;
     margin-top: 20px;
     color: #191778;
     cursor: pointer;
+}
+.user-info-operator {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    margin: 20px 30px;
+    width: 100%;
+    height: fit-content;
+}
+.user-info-operator .user-info-container {
+    font-size: 16px;
+    width: 72%;
+}
+.user-info-operator .log-out .icon {
+    font-size: 25px;
+    margin-top: 30px;
+    color: #191778;
+    cursor: pointer;
+}
+.department {
+    line-height: 1.2;
+    margin-top: -10px;
 }

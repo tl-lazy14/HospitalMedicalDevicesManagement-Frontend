@@ -79,7 +79,7 @@ const NavBarAdmin = ({onLogOut}) => {
                 </nav>
                 <div className="user-info">
                     <div className="user-info-container">
-                        <p>{user.name}</p>
+                        <p style={{ color: 'black', fontWeight: '600' }}>{user.name}</p>
                         <p style={{opacity: 0.8, fontSize: '14px'}}>{user.department}</p>
                     </div>
                     <div className="log-out">

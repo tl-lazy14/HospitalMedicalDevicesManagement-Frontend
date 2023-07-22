@@ -5,6 +5,7 @@ import { UserContext } from "../components/userContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminSite from "./Site/AdminSite";
+import OperatorSite from "./Site/OperatorSite";
 
 const Homepage = () => {
     const { user, logout } = useContext(UserContext);
@@ -52,6 +53,7 @@ const Homepage = () => {
         <>
             <ToastContainer containerId="welcome" limit={1}/>
             { user && user.isAdmin && <AdminSite onLogOut={handleLogout} /> }
+            { user && !user.isAdmin && <OperatorSite onLogOut={handleLogout} /> }
         </>
     );
 }

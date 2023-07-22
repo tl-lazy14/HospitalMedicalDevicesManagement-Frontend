@@ -241,10 +241,10 @@ const FaultRepairPage = () => {
                     <table>
                         <tbody>
                             <tr className="col-name">
-                                <th style={{width: "12%"}}>Mã thiết bị</th>
+                                <th style={{width: "10%"}}>Mã thiết bị</th>
                                 <th style={{width: "16%"}}>Tên thiết bị</th>
                                 <th style={{width: "16%"}}>Người báo cáo</th>
-                                <th style={{width: "14%"}}>Thời gian phát hiện</th>
+                                <th style={{width: "16%"}}>Thời gian phát hiện</th>
                                 <th style={{width: "17%"}}>Mô tả hỏng hóc</th>
                                 <th style={{width: "13%"}} className={`${dropdownFilterStates || selectedStatus.length > 0 ? 'selected' : ''}`}>
                                     <span>Quyết định sửa</span>

@@ -1,17 +1,24 @@
-import "./PurchaseRequestPage.css";
+import "./RequestUsageOperator.css";
 import SearchIcon from "../../assets/SearchIcon.svg";
+import PlusIcon from "../../assets/plusIcon.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { transformDate, formatNumber } from "../../utils/utils";
-import { useState, useEffect } from "react";
-import { CSVLink } from 'react-csv';
+import { transformDate } from "../../utils/utils";
+import { useState, useEffect, useContext } from "react";
 import api from "../../components/axiosInterceptor";
+import { UserContext } from "../../components/userContext";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalCreateUsageRequest from "../../components/Modal/ModalCreateUsageRequest";
+import ModalEditUsageRequest from "../../components/Modal/ModalEditUsageRequest";
 
-const PurchaseRequestPage = () => {
+
+const RequestUsageOperatorPage = () => {
 
     const accessToken = localStorage.getItem('accessToken');
+    const { user } = useContext(UserContext);
 
-    const [purchaseRequests, setPurchaseRequests] = useState([]);
+    const [usageRequests, setUsageRequests] = useState([]);
     const [countRequest, setCountRequest] = useState(0);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,24 +33,91 @@ const PurchaseRequestPage = () => {
         else setActiveRow(rowIndex);
     };
 
-    const updateStatusRequest = async (request, status) => {
+    const [selectedStatus, setSelectedStatus] = useState([]);
+
+    const handleAction = (action, record) => {
+        if (record.status !== 'Đang chờ duyệt') {
+            toast.error('Không thể thao tác do yêu cầu đã được phê duyệt hoặc từ chối', {
+                position: toast.POSITION.TOP_RIGHT,
+                containerId: "deleteUsageRequestToast",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeButton: false,
+                style: {
+                    color: '#d32f2f',
+                    fontSize: '17px',
+                    backgroundColor: '#f1f4fa',
+                },
+            });
+            return;
+        } else {
+            if (action === 'edit') openEditFormModal(record);
+            else if (action === 'delete') deleteUsageRequest(record);
+        }
+    
+        // Sau khi thực hiện hành động, đặt activeRow về null để ẩn khung
+        setActiveRow(null);
+    };
+
+    const deleteUsageRequest = async (record) => {
         try {
-            const response = await api.put(`/purchase-request/status/${request._id}`, { status: status }, {
+            const response = await api.delete(`/usage/request/crud/${record._id}`, {
                 headers: { token: `Bearer ${accessToken}` }
             });
             console.log(response.data);
-            getListPurchaseRequests();
-            setActiveRow(null);
+            toast.success('Hủy yêu cầu sử dụng thành công!', {
+                position: toast.POSITION.TOP_CENTER,
+                containerId: "deleteUsageRequestToast",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeButton: false,
+                style: {
+                    color: 'white',
+                    fontSize: '17px',
+                    backgroundColor: 'green',
+                    width: '400px',
+                },
+            });
+            getMyUsageRequests();
         } catch (err) {
-            console.log(err);
+            if (err.response && err.response.data && err.response.data.error) {
+                toast.error(`${err.response.data.error}`, {
+                  position: toast.POSITION.TOP_RIGHT,
+                  containerId: 'deleteUsageRequestToast',
+                  autoClose: 3000,
+                  hideProgressBar: true,
+                  closeButton: false,
+                  style: {
+                    color: '#d32f2f',
+                    fontSize: '17px',
+                    backgroundColor: '#f1f4fa',
+                  },
+                });
+            }
         }
     }
 
-    const [selectedStatus, setSelectedStatus] = useState([]);
+    const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+    const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+    const [selectedRecord, setSelectedRecord] = useState(null);
 
-    const getListPurchaseRequests = async () => {
+    const openAddFormModal = () => {
+        setIsEditFormOpen(false);
+        setIsAddFormOpen(true);
+        setActiveRow(null);
+        setDropdownFilterStates(false);
+    };
+
+    const openEditFormModal = (record) => {
+        setIsAddFormOpen(false);
+        setSelectedRecord(record);
+        setIsEditFormOpen(true);
+        setDropdownFilterStates(false);
+    };
+
+    const getMyUsageRequests = async () => {
         try {
-          const response = await api.get('/purchase-request/list-request', {
+          const response = await api.get(`/usage/request/operator/${user._id}`, {
             headers: { token: `Bearer ${accessToken}` },
             params: {
               selectedStatus,
@@ -52,8 +126,8 @@ const PurchaseRequestPage = () => {
               limit: 20
             }
           });
-          setPurchaseRequests(response.data.list);
-          setCountRequest(response.data.totalRequests);
+          setUsageRequests(response.data.list);
+          setCountRequest(response.data.totalRecords);
           setTotalPages(response.data.totalPages);
         } catch (error) {
           console.error('Error:', error);
@@ -61,7 +135,7 @@ const PurchaseRequestPage = () => {
     };
 
     useEffect(() => {
-        getListPurchaseRequests();
+        getMyUsageRequests();
     }, [currentPage, searchQuery, selectedStatus]);
 
     useEffect(() => {
@@ -94,89 +168,57 @@ const PurchaseRequestPage = () => {
         else setCurrentPage(page);
     };
 
-    const [purchaseRequestExport, setPurchaseRequestExport] = useState([]);
-    const [csvData, setCSVData] = useState([]);
-
-    const getPurchaseRequestForExport = async () => {
-        try {
-          const response = await api.get('/purchase-request/export', {
-            headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-            }
-          });
-          setPurchaseRequestExport(response.data.list);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-    
-    useEffect(() => {
-        getPurchaseRequestForExport();
-        const csvSetUpData = [
-            ['Mã người yêu cầu', 'Tên người yêu cầu', 'Tên thiết bị', 'Số lượng', 'Đơn giá dự kiến', 'Tổng tiền', 'Ngày yêu cầu', 'Trạng thái'],
-              ...purchaseRequestExport.map(record => [
-              record.requester.userID,
-              record.requester.name,
-              record.deviceName,
-              record.quantity,
-              record.unitPriceEstimated,
-              record.totalAmountEstimated,
-              record.dateOfRequest,
-              record.status,
-              ],)
-        ];
-        setCSVData(csvSetUpData);
-    }, [accessToken, purchaseRequestExport, searchQuery, selectedStatus]);
-
     return (
         <>
-            <div className="list-request-purchase-page">
-                <h2 className="name-page">Danh sách yêu cầu mua sắm thiết bị y tế</h2>
+            <ToastContainer containerId="deleteUsageRequestToast" limit={1}/>
+            <ModalCreateUsageRequest isModalOpen={isAddFormOpen} setIsModalOpen={setIsAddFormOpen} updateListUsageRequest={getMyUsageRequests} user={user} />
+            {selectedRecord && <ModalEditUsageRequest isModalOpen={isEditFormOpen} setIsModalOpen={setIsEditFormOpen} updateListUsageRequest={getMyUsageRequests} request={selectedRecord} setSelectedRequest={setSelectedRecord} />}
+            <div className="list-request-usage-page">
+                <h2 className="name-page">Danh sách yêu cầu sử dụng thiết bị y tế của bạn</h2>
                 <div className="action-container">
                     <div className="left-action-container">
-                        <CSVLink className="export-button" data={csvData} filename="list-purchase-request.csv">
-                            <div className="button">Xuất file</div>
-                        </CSVLink>
+                        <div onClick={openAddFormModal} className="button">
+                            <img src={PlusIcon} alt="plusIcon" />
+                            <span>Tạo yêu cầu mới</span>
+                        </div>
                     </div>
                     <div className="right-action-container">
-                        <div className="num-devices">{countRequest} yêu cầu mua sắm</div>
+                        <div className="num-devices">{countRequest} yêu cầu sử dụng</div>
                         <div className="search-box">
                             <input
                                 type="text"
                                 value={searchQuery}
-                                placeholder="Tìm kiếm theo người yêu cầu/tên thiết bị" 
+                                placeholder="Tìm kiếm theo tên thiết bị/phòng sử dụng" 
                                 onChange={handleSearchInputChange}
                             />
                             <img src={SearchIcon} alt="searchIcon" />
                         </div>
                     </div>
                 </div>
-                <div className="table-list-purchase-request">
+                <div className="table-list-usage-request">
                     <table>
                         <tbody>
                             <tr className="col-name">
-                                <th style={{width: "17%"}}>Người yêu cầu</th>
-                                <th style={{width: "17%"}}>Tên thiết bị</th>
-                                <th style={{width: "8%"}}>Số lượng</th>
-                                <th style={{width: "13%"}}>Đơn giá dự kiến</th>
-                                <th style={{width: "13%"}}>Tổng tiền dự kiến</th>
-                                <th style={{width: "12%"}}>Ngày yêu cầu</th>
+                                <th style={{width: "10%"}}>STT</th>
+                                <th style={{width: "18%"}}>Phòng sử dụng</th>
+                                <th style={{width: "18%"}}>Tên thiết bị</th>
+                                <th style={{width: "10%"}}>Số lượng</th>
+                                <th style={{width: "11%"}}>Ngày bắt đầu</th>
+                                <th style={{width: "11%"}}>Ngày kết thúc</th>
                                 <th style={{width: "12%"}} className={`${dropdownFilterStates || selectedStatus.length > 0 ? 'selected' : ''}`}>
                                     <span>Trạng thái</span>
                                     <FontAwesomeIcon onClick={() => toggleFilterDropdown()} className="icon" icon={faCaretDown} />
                                 </th>
-                                <th style={{width: "8%"}}>Phê duyệt</th>
+                                <th style={{width: "8%"}}></th>
                             </tr>
-                            {purchaseRequests?.length > 0 && purchaseRequests.map((request, index) => (
+                            {usageRequests?.length > 0 && usageRequests.map((request, index) => (
                             <tr key={request._id} className="record"> 
-                                <td>{request.requester?.userID} - <br/>{request.requester?.name}</td>
+                                <td style={{ paddingLeft: '28px' }}>{20 * (currentPage - 1) + index + 1}</td>
+                                <td>{request.usageDepartment}</td>
                                 <td>{request.deviceName}</td>
                                 <td style={{ paddingLeft: '30px' }}>{request.quantity}</td>
-                                <td>{formatNumber(request.unitPriceEstimated)} VND</td>
-                                <td>{formatNumber(request.totalAmountEstimated)} VND</td>
-                                <td>{transformDate(new Date(request.dateOfRequest).toISOString().split("T")[0])}</td>
+                                <td>{transformDate(new Date(request.startDate).toISOString().split("T")[0])}</td>
+                                <td>{transformDate(new Date(request.endDate).toISOString().split("T")[0])}</td>
                                 <td>
                                     <span 
                                     className={request.status === 'Đã từ chối' ? 'status-refuse' : (request.status === 'Đang chờ duyệt' ? 'status-pending' : (request.status === 'Đã duyệt' ? 'status-accept' : ''))}
@@ -188,11 +230,11 @@ const PurchaseRequestPage = () => {
                                     <FontAwesomeIcon onClick={() => handleIconClick(index)} className={`option-icon ${activeRow === index ? 'selected-row' : ''}`} icon={faEllipsis} />
                                     {activeRow === index && (
                                     <div className="option-container">
-                                        <div className="accept-btn button" onClick={() => updateStatusRequest(request, 'Đã duyệt')}>
-                                            Duyệt
+                                        <div className="accept-btn button" onClick={() => handleAction('edit', request)}>
+                                            Sửa yêu cầu
                                         </div>
-                                        <div className="refuse-btn button" onClick={() => updateStatusRequest(request, 'Đã từ chối')}>
-                                            Từ chối
+                                        <div className="refuse-btn button" onClick={() => handleAction('delete', request)}>
+                                            Hủy yêu cầu
                                         </div>
                                     </div>
                                     )}
@@ -202,7 +244,7 @@ const PurchaseRequestPage = () => {
                         </tbody>
                     </table>
                 </div>
-                {purchaseRequests?.length > 0 && 
+                {usageRequests?.length > 0 && 
                 <div className="pagination">
                     <div className="btn" onClick={() => handlePageChange(1)}>Trang đầu</div>
                     <div className="btn" onClick={() => handlePageChange(currentPage - 1)}>Trang trước</div>
@@ -259,4 +301,4 @@ const PurchaseRequestPage = () => {
     );
 }
 
-export default PurchaseRequestPage;
+export default RequestUsageOperatorPage;

@@ -70,7 +70,8 @@ const DetailDevicePage = () => {
     return (
         <>
             <div className="detail-info-page">
-                <h2 className="name-page">Thông tin thiết bị <span>{device.deviceID} - {device.deviceName}</span></h2>
+                <h2 className="name-page">Thông tin chi tiết thiết bị</h2>
+                <h2 className='name-device'>{device.deviceID} - {device.deviceName}</h2>
                 <div className='btn-back' onClick={() => navigate('/list-device')}>Quay về trang danh sách thiết bị</div>
                 <div className='info-device-container'>
                     <div className='row'>
