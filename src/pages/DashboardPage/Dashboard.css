@@ -1,0 +1,334 @@
+.dashboard-page {
+    width: 100%;
+    margin-left: 315px;
+    margin-right: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.dashboard-page .name-page {
+    font-size: 29px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.dashboard-page .btn-refresh {
+    background-color: #3a36db;
+    cursor: pointer;
+    color: white;
+    width: 130px;
+    text-align: center;
+    padding: 8px 0 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 17px;
+    position: absolute;
+    top: 30px;
+    right: 40px
+}
+.dashboard-page .btn-refresh:hover {
+    background-color: #191778;
+}
+.num-device-by-status-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 20px;
+}
+.num-device-by-status-element {
+    display: flex;
+    width: 225px;
+    justify-content: space-between;
+    border-radius: 16px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+.num-device-by-status-element p {
+    margin: 3px 0;
+    color: white;
+}
+.num-device-by-status-element .label {
+    font-size: 16px;
+}
+.num-device-by-status-element .quantity {
+    font-size: 28px;
+    font-weight: 600;
+}
+.num-device-by-status-element .icon {
+    color: white;
+    font-size: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.521);
+    border-radius: 50%;
+    padding: 13px;
+    margin-top: 8px;
+}
+.number-device-chart {
+    display: flex;
+}
+.classify {
+    background-color: white;
+    box-sizing: border-box;
+    width: 39.4%;
+    border-radius: 16px;
+    padding: 20px 20px 50px;
+    height: 400px;
+    position: relative;
+    margin-right: 15px;
+}
+.classify h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.classify .total-num-device {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 26px);
+    line-height: 1.1;
+}
+.classify .total-num-device .quantity {
+    font-weight: 600;
+    text-align: center;
+    font-size: 25px;
+}
+.classify .total-num-device .label {
+    font-size: 17px;
+}
+.num-device-by-month {
+    background-color: white;
+    box-sizing: border-box;
+    width: 60%;
+    border-radius: 16px;
+    padding: 20px 20px 0;
+    height: 400px;
+}
+.num-device-by-month .top-container, .overview-statistic .top-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    z-index: 1000;
+}
+.num-device-by-month .top-container h3, .overview-statistic .top-container h3 {
+    margin: 0;
+    font-size: 20px;
+}
+.num-device-by-month .select-year {
+    position: relative;
+}
+.num-device-by-month .select-year .selected-year, .overview-statistic .select-year .selected-year {
+    background-color: #3a36db;
+    cursor: pointer;
+    color: white;
+    width: 100px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.num-device-by-month .select-year .selected-year:hover, .overview-statistic .select-year .selected-year:hover {
+    background-color: #191778;
+}
+.num-device-by-month .select-year .selected-year .icon, .overview-statistic .select-year .selected-year .icon {
+    margin-left: 10px;
+    font-size: 17px;
+}
+.num-device-by-month .select-year .list-year {
+    border-radius: 8px;
+    margin-top: 2px;
+    text-align: center;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 38px;
+    z-index: 100;
+    width: 116px;
+}
+.num-device-by-month .select-year .list-year div, .overview-statistic .select-year .list-year div {
+    cursor: pointer;
+    padding: 10px;
+}
+.num-device-by-month .select-year .list-year div:hover, .overview-statistic .select-year .list-year div:hover {
+    background-color: #e7ebef;
+}
+.num-device-by-month .select-year .list-year .selected, .overview-statistic .select-year .list-year .selected {
+    background-color: #d3dfe9;
+}
+.num-device-by-month .bar-chart {
+    height: 330px;
+}
+.overview-statistic {
+    background-color: white;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 16px;
+    padding: 20px 20px 0;
+    height: 400px;
+    margin-top: 20px;
+}
+.overview-statistic .select-year {
+    position: relative;
+}
+.overview-statistic .select-year .list-year {
+    border-radius: 8px;
+    margin-top: 2px;
+    text-align: center;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 38px;
+    z-index: 100;
+    width: 116px;
+}
+.overview-statistic .bar-chart {
+    height: 330px;
+}
+.metrics-inventory {
+    display: flex;
+    margin-top: 20px;
+}
+.metrics-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.metrics-container .row {
+    display: flex;
+    justify-content: space-between;
+}
+.metric-element {
+    background-color: white;
+    margin-bottom: 10px;
+    width: 225px;
+    border-radius: 16px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 120px;
+}
+.metric-element .label {
+    font-weight: 600;
+    font-size: 15px;
+}
+.metric-element .result {
+    color: #3a36db;
+    font-weight: 600;
+    font-size: 38px;
+    text-align: center;
+}
+.metric-element .unit {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(121, 114, 114);
+    margin-top: -3px;
+}
+.cost-breakdown-chart {
+    background-color: white;
+    box-sizing: border-box;
+    width: 60%;
+    border-radius: 16px;
+    padding: 20px 20px 0;
+    height: 510px;
+    margin-left: 15px;
+}
+.cost-breakdown-chart .top-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    z-index: 1000;
+}
+.cost-breakdown-chart .top-container h3 {
+    margin: 0;
+    font-size: 20px;
+}
+.cost-breakdown-chart .select-year {
+    position: relative;
+}
+.cost-breakdown-chart .select-year .selected-year {
+    background-color: #3a36db;
+    cursor: pointer;
+    color: white;
+    width: 100px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.cost-breakdown-chart .select-year .selected-year:hover {
+    background-color: #191778;
+}
+.cost-breakdown-chart .select-year .selected-year .icon {
+    margin-left: 10px;
+    font-size: 17px;
+}
+.cost-breakdown-chart .select-year .list-year {
+    border-radius: 8px;
+    margin-top: 2px;
+    text-align: center;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 38px;
+    z-index: 100;
+    width: 116px;
+}
+.cost-breakdown-chart .select-year .list-year div {
+    cursor: pointer;
+    padding: 10px;
+}
+.cost-breakdown-chart .select-year .list-year div:hover {
+    background-color: #e7ebef;
+}
+.cost-breakdown-chart .select-year .list-year .selected {
+    background-color: #d3dfe9;
+}
+.cost-breakdown-chart .line-chart {
+    height: 435px;
+}
+.three-pie-chart {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 13px;
+}
+.three-pie-chart .element {
+    background-color: white;
+    box-sizing: border-box;
+    width: 32%;
+    border-radius: 16px;
+    padding: 20px 20px 50px;
+    height: 400px;
+    position: relative;
+}
+.three-pie-chart .element h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.three-pie-chart .element .element-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.three-pie-chart .element .element-info .quantity {
+    font-weight: 600;
+    text-align: center;
+    font-size: 25px;
+}
+.three-pie-chart .element .element-info .label {
+    font-size: 17px;
+    text-align: center;
+}
+.three-pie-chart .element .total-usage-request {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 31px);
+}
+.three-pie-chart .element .total-fault-repair {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 35px);
+}
+.three-pie-chart .element .total-purchase-request {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 28px);
+}

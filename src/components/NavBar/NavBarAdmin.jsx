@@ -18,7 +18,7 @@ const NavBarAdmin = ({onLogOut}) => {
 
     return (
             <div className="nav-bar">
-                <div onClick={() => navigate('/')} className="logo">
+                <div onClick={() => navigate('/dashboard')} className="logo">
                     <img src={WebLogo} alt="logo" />
                     <h2>Admin Site</h2>
                 </div>

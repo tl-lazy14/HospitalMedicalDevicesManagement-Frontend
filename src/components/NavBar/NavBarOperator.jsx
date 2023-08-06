@@ -16,7 +16,7 @@ const NavBarOperator = ({ onLogOut }) => {
 
     return (
             <div className="nav-bar">
-                <div onClick={() => navigate('/')} className="logo">
+                <div onClick={() => navigate('/usage-request')} className="logo">
                     <img src={WebLogo} alt="logo" />
                     <h2>Operator Site</h2>
                 </div>
