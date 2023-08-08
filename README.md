@@ -31,8 +31,6 @@ Người quản lý:
  - Quản lý tài khoản người vận hành
  - Hầu hết các chức năng quản lý đều cho phép CRUD, ngoài ra có thể tìm kiếm, lọc, sắp xếp, xuất file
 
-## Hướng dẫn sử dụng
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
