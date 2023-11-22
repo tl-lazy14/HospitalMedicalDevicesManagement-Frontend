@@ -117,14 +117,13 @@ const RequestUsageOperatorPage = () => {
 
     const getMyUsageRequests = async () => {
         try {
-          const response = await api.get(`/usage/request/operator/${user._id}`, {
+          const response = await api.post(`/usage/request/operator/${user._id}`, {
+            selectedStatus,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setUsageRequests(response.data.list);
           setCountRequest(response.data.totalRecords);

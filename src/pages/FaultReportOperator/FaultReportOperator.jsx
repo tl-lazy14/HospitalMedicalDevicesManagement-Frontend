@@ -66,14 +66,13 @@ const FaultReportOperatorPage = () => {
 
     const getMyFaultReports = async () => {
         try {
-          const response = await api.get(`/faultRepair/fault/operator/${user._id}`, {
+          const response = await api.post(`/faultRepair/fault/operator/${user._id}`, {
+            selectedStatus,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setFaultReports(response.data.list);
           setCount(response.data.totalRecords);

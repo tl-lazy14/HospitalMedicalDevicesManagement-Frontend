@@ -121,15 +121,14 @@ const ListInfoUsage = () => {
 
     const getListUsageInfos = async () => {
         try {
-          const response = await api.get('/usage/info/list-usage', {
+          const response = await api.post('/usage/info/list-usage', {
+            selectedUsageDepartment,
+            selectedMonth,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedUsageDepartment,
-              selectedMonth,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setUsageInfos(response.data.list);
           setCountUsageTimes(response.data.totalRecords);
@@ -182,13 +181,12 @@ const ListInfoUsage = () => {
 
     const getUsageInfoForExport = async () => {
         try {
-          const response = await api.get('/usage/export', {
+          const response = await api.post('/usage/export', {
+            selectedUsageDepartment,
+            selectedMonth,
+            searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedUsageDepartment,
-              selectedMonth,
-              searchQuery,
-            }
           });
           setUsageInfoExport(response.data.list);
         } catch (error) {

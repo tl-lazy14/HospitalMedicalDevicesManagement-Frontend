@@ -430,6 +430,7 @@ const ModalAddUsageInfo = ({ isModalOpen, setIsModalOpen, updateListUsageInfo })
                             name="usageDepartment"
                             value={newUsageInfo.usageDepartment}
                             onChange={handleInputChange}
+                            autoComplete='off'
                             />
                         </label>
                 </div>

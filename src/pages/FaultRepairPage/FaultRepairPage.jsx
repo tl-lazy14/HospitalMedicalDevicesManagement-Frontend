@@ -63,14 +63,13 @@ const FaultRepairPage = () => {
 
     const getListFaultReports = async () => {
         try {
-          const response = await api.get('/faultRepair/fault/list', {
+          const response = await api.post('/faultRepair/fault/list', {
+            selectedStatus,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setFaultReports(response.data.list);
           setCount(response.data.totalRecords);
@@ -176,12 +175,11 @@ const FaultRepairPage = () => {
 
     const getFaultRepairInfoForExport = async () => {
         try {
-          const response = await api.get('/faultRepair/fault-repair/export', {
+          const response = await api.post('/faultRepair/fault-repair/export', {
+            selectedStatus,
+            searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-            }
           });
           setFaultRepairExport(response.data.list);
         } catch (error) {
