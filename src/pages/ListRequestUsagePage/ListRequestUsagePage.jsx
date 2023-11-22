@@ -65,16 +65,15 @@ const ListRequestUsagePage = () => {
 
     const getListUsageRequests = async () => {
         try {
-          const response = await api.get('/usage/request/list-request', {
+          const response = await api.post('/usage/request/list-request', {
+            selectedUsageDepartment,
+            selectedStatus,
+            selectedMonth,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedUsageDepartment,
-              selectedStatus,
-              selectedMonth,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setUsageRequests(response.data.request);
           setCountRequest(response.data.totalRequests);

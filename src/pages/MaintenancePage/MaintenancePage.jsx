@@ -133,15 +133,14 @@ const ListInfoMaintenance = () => {
 
     const getListMaintenanceInfos = async () => {
         try {
-          const response = await api.get('/maintenance/info/list', {
+          const response = await api.post('/maintenance/info/list', {
+            selectedProviders,
+            selectedMonth,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedProviders,
-              selectedMonth,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setMaintenanceInfos(response.data.list);
           setCount(response.data.totalRecords);
@@ -194,13 +193,12 @@ const ListInfoMaintenance = () => {
 
     const getMaintenanceInfoForExport = async () => {
         try {
-          const response = await api.get('/maintenance/info/export', {
+          const response = await api.post('/maintenance/info/export', {
+            selectedProviders,
+            selectedMonth,
+            searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedProviders,
-              selectedMonth,
-              searchQuery,
-            }
           });
           setMaintenanceInfoExport(response.data.list);
         } catch (error) {

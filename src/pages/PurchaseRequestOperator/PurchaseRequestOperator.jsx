@@ -115,14 +115,13 @@ const RequestPurchaseOperatorPage = () => {
 
     const getMyPurchaseRequests = async () => {
         try {
-          const response = await api.get(`/purchase-request/operator/${user._id}`, {
+          const response = await api.post(`/purchase-request/operator/${user._id}`, {
+            selectedStatus,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setRequests(response.data.list);
           setCountRequest(response.data.totalRecords);

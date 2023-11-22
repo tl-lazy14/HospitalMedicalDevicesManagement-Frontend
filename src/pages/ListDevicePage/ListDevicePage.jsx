@@ -141,23 +141,22 @@ const ListDevicePage = () => {
 
     const getDevices = async () => {
         try {
-          const response = await api.get('/device', {
-            headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedType,
-              selectedManufacturer,
-              selectedStorageLocation,
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
-          });
-          setDevices(response.data.devices);
-          setCountDevice(response.data.totalDevices);
-          setTotalPages(response.data.totalPages);
+            const response = await api.post('/device/get-list-device', {
+                selectedType,
+                selectedManufacturer,
+                selectedStorageLocation,
+                selectedStatus,
+                searchQuery,
+                page: currentPage,
+                limit: 20
+            }, {
+                headers: { token: `Bearer ${accessToken}` },
+            });
+            setDevices(response.data.devices);
+            setCountDevice(response.data.totalDevices);
+            setTotalPages(response.data.totalPages);
         } catch (error) {
-          console.error('Error:', error);
+            console.error('Error:', error);
         }
     };
 
@@ -243,15 +242,14 @@ const ListDevicePage = () => {
 
     const getDevicesForExport = async () => {
         try {
-          const response = await api.get('/device/export', {
+          const response = await api.post('/device/export', {
+                selectedType,
+                selectedManufacturer,
+                selectedStorageLocation,
+                selectedStatus,
+                searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedType,
-              selectedManufacturer,
-              selectedStorageLocation,
-              selectedStatus,
-              searchQuery,
-            }
           });
           setDevicesExport(response.data.devices);
         } catch (error) {

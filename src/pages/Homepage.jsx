@@ -52,8 +52,8 @@ const Homepage = () => {
     return (
         <>
             <ToastContainer containerId="welcome" limit={1}/>
-            { user && user.isAdmin && <AdminSite onLogOut={handleLogout} /> }
-            { user && !user.isAdmin && <OperatorSite onLogOut={handleLogout} /> }
+            { user && user.admin && <AdminSite onLogOut={handleLogout} /> }
+            { user && !user.admin && <OperatorSite onLogOut={handleLogout} /> }
         </>
     );
 }

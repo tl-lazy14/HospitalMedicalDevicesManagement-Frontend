@@ -114,14 +114,13 @@ const ListOperator = () => {
 
     const getListOperator = async () => {
         try {
-          const response = await api.get('/user/info/list', {
+          const response = await api.post('/user/info/list', {
+            selectedDepartment,
+            searchQuery,
+            page: currentPage,
+            limit: 20            
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedDepartment,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setUser(response.data.list);
           setCount(response.data.totalRecords);
@@ -170,12 +169,11 @@ const ListOperator = () => {
 
     const getOperatorsForExport = async () => {
         try {
-          const response = await api.get('/user/info/export', {
+          const response = await api.post('/user/info/export', {
+            selectedDepartment,
+            searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedDepartment,
-              searchQuery,
-            }
           });
           setOperatorsExport(response.data.list);
         } catch (error) {

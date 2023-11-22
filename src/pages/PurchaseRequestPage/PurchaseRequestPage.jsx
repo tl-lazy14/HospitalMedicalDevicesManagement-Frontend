@@ -43,14 +43,13 @@ const PurchaseRequestPage = () => {
 
     const getListPurchaseRequests = async () => {
         try {
-          const response = await api.get('/purchase-request/list-request', {
+          const response = await api.post('/purchase-request/list-request', {
+            selectedStatus,
+            searchQuery,
+            page: currentPage,
+            limit: 20
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-              page: currentPage,
-              limit: 20
-            }
           });
           setPurchaseRequests(response.data.list);
           setCountRequest(response.data.totalRequests);
@@ -99,12 +98,11 @@ const PurchaseRequestPage = () => {
 
     const getPurchaseRequestForExport = async () => {
         try {
-          const response = await api.get('/purchase-request/export', {
+          const response = await api.post('/purchase-request/export', {
+            selectedStatus,
+            searchQuery,
+          }, {
             headers: { token: `Bearer ${accessToken}` },
-            params: {
-              selectedStatus,
-              searchQuery,
-            }
           });
           setPurchaseRequestExport(response.data.list);
         } catch (error) {
